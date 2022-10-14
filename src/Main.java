@@ -9,17 +9,17 @@ public class Main {
 
     public static void main(String[] args){
         // for testing onli xdxdxdxd
-/*
-        Student student = new Student(1,"Jethro Emmanuel","Roxas","m", "09065235411","Manila",2,1,1000, 1160);
+
+        Student student = new Student(1,"Jethro Emmanuel","Roxas","m", "09065235411","Manila",2,1,1000);
         Student.studentList.add(student);
-        Student student2 = new Student(2,"Jethro2","Roxas","m","1293827121","jan",1,2, 300, 745);
+        Student student2 = new Student(2,"Jethro2","Roxas","m","1293827121","jan",1,2, 300);
         Student.studentList.add(student2);
-        Student student3 = new Student(3,"Jethro3","Roxas","m","1212121210","jan",3,1,3343, 1685);
+        Student student3 = new Student(3,"Jethro3","Roxas","m","1212121210","jan",3,1,3343);
         Student.studentList.add(student3);
-        Student student4 = new Student(4,"Jethro4","Roxas","m","10323232","jan",2,1,32343, 1160);
+        Student student4 = new Student(4,"Jethro4","Roxas","m","10323232","jan",2,1,32343);
         Student.studentList.add(student4);
 
- */
+
 
         menu_ST(); // display Student or Teacher menu
         menu(choice());

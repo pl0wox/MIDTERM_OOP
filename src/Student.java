@@ -9,10 +9,6 @@ public class Student extends Person {
     final int  RepeatedModulePrice = 110;
 
     public static List<Student> studentList = new ArrayList<>();
-    
-    // hi
-
-
 
 
     //  Constructor Student
@@ -60,9 +56,10 @@ public class Student extends Person {
         int addID = in.nextInt();
 
         // Validation for Student ID
-        for(int i = 0; i < studentList.size(); i++){
-            if(addID == studentList.get(i).getID()){
-                System.out.println("bobo, ID already registered!");
+        for(Student print : studentList){
+            if(addID == print.getID()){
+                System.out.println("ID already registered! \nReturning to Student Menu...");
+                Main.sysPause();
                 return;
             }
         }
@@ -111,20 +108,31 @@ public class Student extends Person {
         // store inside the array list
         studentList.add(studentobj);
 
-    }
+        /*
+        for(Student print : ){
+            System.out.println(studentList.get(print));
+        }
 
+         */
+
+    }
     static void update_student(){
         System.out.println("====================================================");
         System.out.println("\t\t\t\t<< UPDATE STUDENT >>");
         System.out.println("====================================================\n");
+
 
         Scanner in = new Scanner(System.in).useDelimiter("\n");
 
         System.out.print("Enter ID: ");
         int upID = in.nextInt();
 
+
+
         for(int i = 0; i < studentList.size(); i++){
             if(upID == studentList.get(i).getID()){
+
+
 
 
                 System.out.println("Student#" + upID);
