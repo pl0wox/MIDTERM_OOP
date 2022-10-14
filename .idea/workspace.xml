@@ -4,11 +4,7 @@
     <list default="true" id="d166c190-3c91-4f9a-a627-376b32e91083" name="Changes" comment="Transfered student methods from Main.java to Student.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
-    </list>
-    <list id="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" name="Changes by Jetoro" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
     </list>
@@ -30,81 +26,12 @@
         <option value="jetoro &lt;76423923+pl0wox@users.noreply.github.com&gt;" />
       </list>
     </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Teacher.java">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="7" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="10" end1="11" start2="10" end2="11" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="15" end1="15" start2="15" end2="16" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="39" end1="39" start2="40" end2="46" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="114" end1="115" start2="121" end2="123" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="117" end1="118" start2="125" end2="126" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="166" end1="166" start2="174" end2="184" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="167" end1="167" start2="185" end2="186" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="169" end1="169" start2="188" end2="189" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Main.java">
-      <ranges>
-        <range start1="12" end1="13" start2="12" end2="13" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="14" end1="15" start2="14" end2="15" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="16" end1="17" start2="16" end2="17" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="18" end1="19" start2="18" end2="19" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="44" end1="46" start2="44" end2="44" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="85" end1="86" start2="83" end2="83" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="92" end1="92" start2="89" end2="91" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="120" end1="121" start2="119" end2="120" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="124" end1="125" start2="123" end2="124" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="128" end1="129" start2="127" end2="128" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="132" end1="133" start2="131" end2="132" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="174" end1="179" start2="173" end2="174" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Student.java">
-      <ranges>
-        <range start1="53" end1="54" start2="53" end2="54" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="83" end1="88" start2="83" end2="84" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="126" end1="127" start2="122" end2="123" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="148" end1="153" start2="144" end2="145" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="158" end1="170" start2="150" end2="152" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="171" end1="180" start2="153" end2="162" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="181" end1="184" start2="163" end2="166" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="185" end1="193" start2="167" end2="175" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="195" end1="200" start2="177" end2="182" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="201" end1="203" start2="183" end2="185" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="204" end1="209" start2="186" end2="193" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="210" end1="213" start2="194" end2="198" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="214" end1="218" start2="199" end2="203" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="219" end1="220" start2="204" end2="205" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="221" end1="225" start2="206" end2="210" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="226" end1="234" start2="211" end2="220" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="235" end1="241" start2="221" end2="233" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="242" end1="244" start2="234" end2="236" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="245" end1="253" start2="237" end2="246" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="254" end1="256" start2="247" end2="249" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="257" end1="264" start2="250" end2="258" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="265" end1="267" start2="259" end2="261" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="268" end1="276" start2="262" end2="273" changelist="cc4493b1-ab31-4b13-8f31-de8a4f1ee095" />
-        <range start1="277" end1="281" start2="274" end2="278" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="282" end1="284" start2="279" end2="281" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="285" end1="286" start2="282" end2="295" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="287" end1="311" start2="296" end2="315" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="367" end1="372" start2="371" end2="372" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="394" end1="395" start2="394" end2="395" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="413" end1="414" start2="413" end2="416" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="419" end1="426" start2="421" end2="422" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="436" end1="441" start2="432" end2="433" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="457" end1="462" start2="449" end2="450" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="467" end1="472" start2="455" end2="456" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="477" end1="482" start2="461" end2="462" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="493" end1="498" start2="473" end2="474" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="514" end1="519" start2="490" end2="491" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="524" end1="529" start2="496" end2="497" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-        <range start1="534" end1="539" start2="502" end2="503" changelist="d166c190-3c91-4f9a-a627-376b32e91083" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -120,15 +47,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "settings.editor.selected.configurable": "inlay.hints"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -216,11 +142,11 @@
       <updated>1665477227182</updated>
     </task>
     <task id="LOCAL-00010" summary="Transfered student methods from Main.java to Student.java">
-      <created>1665716541947</created>
+      <created>1665576462726</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1665716541947</updated>
+      <updated>1665576462726</updated>
     </task>
     <option name="localTasksCounter" value="11" />
     <servers />
@@ -230,7 +156,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
