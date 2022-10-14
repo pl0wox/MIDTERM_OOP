@@ -1,4 +1,5 @@
 public class Person {
+    //isa pa ulit
     private int ID;
     //private long PhoneNum;
     private String FName, LName, PhoneNum, Gender, Address;
