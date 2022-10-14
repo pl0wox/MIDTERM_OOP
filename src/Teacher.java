@@ -15,9 +15,32 @@ public class Teacher extends Person {
         this.teachingHours = teachingHours;
     }
 
+
+
+    public String getDepartment() {
+        return department;
+    }
+    public void setDepartment(){
+        this.department = department;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+    public void setDesignation(){
+        this.designation = designation;
+    }
+
+    public double getTeachingHours() {
+        return teachingHours;
+    }
+    public void setTeachingHours(){
+        this.teachingHours = teachingHours;
+    }
+
     static void add_teacher(){
         System.out.println("====================================================");
-        System.out.println("\t\t\t\t<< ADD NEW TEACHER >>"); //weh
+        System.out.println("\t\t\t\t<< ADD NEW TEACHER >>");
         System.out.println("====================================================\n");
 
 
@@ -65,7 +88,7 @@ public class Teacher extends Person {
         }
 
 
-        System.out.println("Enter Designation ");
+        System.out.println("Enter Designation: ");
         System.out.println("[1] Head of Faculty (HOF)");
         System.out.println("[2] Coordinator     (CO)");
         System.out.println("[3] Lecturer        (L)");
@@ -76,35 +99,93 @@ public class Teacher extends Person {
                 addDesignation = "Head of Faculty";
                 break;
             case 2:
-                addDesignation = "Cooorinator";
+                addDesignation = "Coordinator";
                 break;
             case 3:
                 addDesignation = "Lecturer";
                 break;
             default:
-                System.out.println("Please Enter a valid Input!");
+                System.out.println("Please enter a valid input!");
         }
 
         System.out.println("Enter no. of Teaching Hours: ");
         double addteachingHours = in.nextDouble();
-        
+
         // store all inputs of user inside the constructor
-       Teacher teacherobj = new Teacher(addID,addFirstname,addLastname,addGender,addPhone,addAddress,addDepartment,addDesignation,addteachingHours);
+        Teacher teacherobj = new Teacher(addID,addFirstname,addLastname,addGender,addPhone,addAddress,addDepartment,addDesignation,addteachingHours);
 
         // store inside the array list
         teacherList.add(teacherobj);
 
     }
+    static void update_teacher(){
+        System.out.println("====================================================");
+        System.out.println("\t\t\t\t<< UPDATE TEACHER >>");
+        System.out.println("====================================================\n");
 
-    public String getDepartment() {
-        return department;
+        if (teacherList.size() == 0) {
+            System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return;
+        }
+        else{
+            //insert here
+        }
     }
+    static void delete_teacher(){
+        System.out.println("====================================================");
+        System.out.println("\t\t\t\t<< DELETE TEACHER >>");
+        System.out.println("====================================================\n");
 
-    public String getDesignation() {
-        return designation;
+        if (teacherList.size() == 0) {
+            System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
+            Main.sysPause();
+            return;
+        }
+        else {
+            //insert here
+        }
     }
+    static void salary(){
+        System.out.println("====================================================");
+        System.out.println("\t\t\t   << SALARY CALCULATOR >>");
+        System.out.println("====================================================\n");
 
-    public double getTeachingHours() {
-        return teachingHours;
+        if (teacherList.size() == 0) {
+            System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
+            Main.sysPause();
+            return;
+        }
+        else{
+            // insert here
+        }
+    }
+    static void display(){
+        System.out.println("====================================================");
+        System.out.println("\t\t\t\t<< TEACHERS INDEX >>");
+        System.out.println("====================================================\n");
+
+        if (teacherList.size() == 0) {
+            System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
+            Main.sysPause();
+            return;
+        }
+        else{
+            System.out.println("\tID\tTEACHER NAME");
+            for (int i = 0; i < teacherList.size(); i++) {
+                if (teacherList.get(i).getID() != 0) {
+                    System.out.println("\nTeacher# " + teacherList.get(i).getID() + " : " + teacherList.get(i).getFName() + " " + teacherList.get(i).getLName());
+                }
+            }
+        }
+
     }
 }

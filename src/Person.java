@@ -6,7 +6,6 @@ public class Person {
     public int getID() {
         return ID;
     }
-
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -14,7 +13,6 @@ public class Person {
     public String getPhoneNum() {
         return PhoneNum;
     }
-
     public void setPhoneNum(String phoneNum) {
         PhoneNum = phoneNum;
     }
@@ -22,7 +20,6 @@ public class Person {
     public String getFName() {
         return FName;
     }
-
     public void setFName(String FName) {
         this.FName = FName;
     }
@@ -30,7 +27,6 @@ public class Person {
     public String getLName() {
         return LName;
     }
-
     public void setLName(String LName) {
         this.LName = LName;
     }
@@ -38,7 +34,6 @@ public class Person {
     public String getGender() {
         return Gender;
     }
-
     public void setGender(String gender) {
         Gender = gender;
     }
@@ -46,7 +41,6 @@ public class Person {
     public String getAddress() {
         return Address;
     }
-
     public void setAddress(String address) {
         Address = address;
     }
@@ -62,6 +56,3 @@ public class Person {
     }
 
 }
-
-
-
