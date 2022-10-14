@@ -23,6 +23,8 @@ public class Student extends Person {
         this.amount_paid = amount_paid;
     }
 
+
+
     public int getNumOfModules() {
         return numOfModules;
     }
