@@ -51,7 +51,7 @@ public class Student extends Person {
     public double getBalance(){
         return balance;
     }
-    public double setBalance(){
+    public double setBalance(double balance){
         this.balance = balance;
         return 0;
     }
@@ -81,11 +81,7 @@ public class Student extends Person {
         for (int i = 0; i < studentList.size(); i++) {
             if (addID == studentList.get(i).getID()) {
                 System.out.println("ID is already registered!");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                Main.sysPause();
                 return;
             }
         }
@@ -146,92 +142,82 @@ public class Student extends Person {
         if (studentList.size() == 0) {
             System.out.println("There are no Students registered in the database!");
             System.out.println("Returning to the Main Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             return;
         }
         else {
             Scanner in = new Scanner(System.in).useDelimiter("\n");
 
-            if (studentList.size() == 0) {
-                System.out.println("There are no Students registered in the database!");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return;
-            }
-            else {
-                System.out.print("Enter ID: ");
-                int upID = in.nextInt();
+            System.out.print("Enter ID: ");
+            int upID = in.nextInt();
 
-                for (int i = 0; i < studentList.size(); i++) {
-                    if (upID == studentList.get(i).getID()) {
-                        System.out.println("Student#" + upID);
-                        System.out.println("\nName: " + studentList.get(i).getFName() + " " + studentList.get(i).getLName());
-                        System.out.println("Gender: " + studentList.get(i).getGender());
-                        System.out.println("Phone Number: " + studentList.get(i).getPhoneNum());
-                        System.out.println("Address: " + studentList.get(i).getAddress());
-                        System.out.println("Number of Modules: " + studentList.get(i).getNumOfModules());
-                        System.out.println("Number of Repeated Modules: " + studentList.get(i).getRep_modules());
+            for (int i = 0; i < studentList.size(); i++) {
+                if (upID == studentList.get(i).getID()) {
+                    System.out.println("Student#" + upID);
+                    System.out.println("\nName: " + studentList.get(i).getFName() + " " + studentList.get(i).getLName());
+                    System.out.println("Gender: " + studentList.get(i).getGender());
+                    System.out.println("Phone Number: " + studentList.get(i).getPhoneNum());
+                    System.out.println("Address: " + studentList.get(i).getAddress());
+                    System.out.println("Number of Modules: " + studentList.get(i).getNumOfModules());
+                    System.out.println("Number of Repeated Modules: " + studentList.get(i).getRep_modules());
 
-                        System.out.println("====================================================");
-                        System.out.println("\t\t\t\t\t<< UPDATE >>");
-                        System.out.println("====================================================\n");
+                    System.out.println("====================================================");
+                    System.out.println("\t\t\t\t\t<< UPDATE >>");
+                    System.out.println("====================================================\n");
 
-                        System.out.println("[1] Student Number");
-                        System.out.println("[2] Name");
-                        System.out.println("[3] Gender");
-                        System.out.println("[4] Phone Number");
-                        System.out.println("[5] Address ");
-                        System.out.println("[6] Number of Modules");
-                        System.out.println("[7] Number of Repeated Modules");
-                        System.out.println("[8] Cancel");
+                    System.out.println("[1] Student Number");
+                    System.out.println("[2] Name");
+                    System.out.println("[3] Gender");
+                    System.out.println("[4] Phone Number");
+                    System.out.println("[5] Address ");
+                    System.out.println("[6] Number of Modules");
+                    System.out.println("[7] Number of Repeated Modules");
+                    System.out.println("[8] Cancel");
 
 
-                        switch (Main.choice()) {
-                            case 1:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t<< UPDATE STUDENT NUMBER >>");
-                                System.out.println("====================================================\n");
+                    switch (Main.choice()) {
+                        case 1:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t<< UPDATE STUDENT NUMBER >>");
+                            System.out.println("====================================================\n");
 
-                                System.out.print("Enter new Student Number (ex.202110139): ");
-                                int updateID = in.nextInt();
+                            System.out.print("Enter new Student Number (ex.202110139): ");
+                            int updateID = in.nextInt();
 
-                                for (int k = 0; k < studentList.size(); k++) {
-                                    if (updateID == studentList.get(k).getID()) {
-                                        System.out.println(updateID + " is already registered! please try again");
-                                    }
+                            for (int k = 0; k < studentList.size(); k++) {
+                                if (updateID == studentList.get(k).getID()) {
+                                    System.out.println(updateID + " is already registered! please try again");
+                                    Main.sysPause();
+                                    return;
                                 }
+                            }
 
-                                // no statements for updated sn yet
+                            studentList.get(i).setID(updateID);
+                            System.out.println("\nStudent ID has been updated!");
+                            Main.sysPause();
+                            break;
 
-                                break;
+                        case 2:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t  << UPDATE STUDENT NAME >>");
+                            System.out.println("====================================================\n");
 
-                            case 2:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t  << UPDATE STUDENT NAME >>");
-                                System.out.println("====================================================\n");
+                            System.out.println("Enter Student Name ");
 
-                                System.out.println("Enter Student Name ");
+                            System.out.print("Enter First name: ");
+                            String updateFName = in.next();
+                            System.out.println("Enter Last name");
+                            String updateLName = in.next();
 
-                                System.out.print("Enter First name: ");
-                                String updateFName = in.next();
-                                System.out.println("Enter Last name");
-                                String updateLName = in.next();
+                            studentList.get(i).setFName(updateFName);
+                            studentList.get(i).setLName(updateLName);
+                            System.out.println("\nStudent name has been updated!");
+                            break;
 
-                                studentList.get(i).setFName(updateFName);
-                                studentList.get(i).setLName(updateLName);
-                                System.out.println("\nStudent name has been updated!");
-                                break;
-                            case 3:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t << UPDATE STUDENT GENDER >>");
-                                System.out.println("====================================================\n");
+                        case 3:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t << UPDATE STUDENT GENDER >>");
+                            System.out.println("====================================================\n");
 
                                 System.out.print("");
                                 break;
@@ -252,16 +238,17 @@ public class Student extends Person {
                                 System.out.println("\t\t\t\t<< UPDATE ADDRESS >>");
                                 System.out.println("====================================================\n");
 
-                                System.out.print("Enter your new Address: ");
-                                String newAddress = in.next();
+                            System.out.print("Enter your new Address: ");
+                            String newAddress = in.next();
 
-                                studentList.get(i).setAddress(newAddress);
-                                System.out.println("\nAddress has been updated!");
-                                break;
-                            case 6:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t\t<< UPDATE MODULES >>");
-                                System.out.println("====================================================\n");
+                            studentList.get(i).setAddress(newAddress);
+                            System.out.println("\nAddress has been updated!");
+                            break;
+
+                        case 6:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t\t<< UPDATE MODULES >>");
+                            System.out.println("====================================================\n");
 
                                 System.out.print("Update Number Modules: ");
                                 int newModules = in.nextInt();
@@ -275,40 +262,47 @@ public class Student extends Person {
                                 }
                                 break;
 
-                            case 7:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t<< UPDATE REPEATED MODULES >>");
-                                System.out.println("====================================================\n");
+                        case 7:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t<< UPDATE REPEATED MODULES >>");
+                            System.out.println("====================================================\n");
 
-                                System.out.println("Update Repeated Modules: ");
-                                int newRepeatedModules = in.nextInt();
+                            System.out.println("Update Repeated Modules: ");
+                            int updateRepeatedModules = in.nextInt();
 
-                                studentList.get(i).setRep_modules(newRepeatedModules);
+                            // check if user still takes 6 module
+                            if(updateRepeatedModules > 2){
+                                System.out.println("Cannot take more than 2 repeated modules!");
+                                Main.sysPause();
+                                return;
+                            }
+                            else if((updateRepeatedModules + studentList.get(i).numOfModules) > 6){
+                                System.out.println("Cannot take more than 2 repeated modules!");
+                                Main.sysPause();
+                                return;
+                            }
+                            else{
+                                studentList.get(i).setRep_modules(updateRepeatedModules);
                                 System.out.println("\n Repeated Modules have been Updated");
-                            case 8:
-                                System.out.println("\nReturning to the Main Menu...");
-                                try {
-                                    Thread.sleep(2000);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                Main.menu_ST();
-                                Main.menu(Main.choice());
-                                break;
-                            default:
-                                System.out.println("Invalid Input!");
-                                try {
-                                    Thread.sleep(2000);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                Main.menu_student();
-                        }
+                                Main.sysPause();
+                            }
+                            break;
+
+                        case 8:
+                            System.out.println("\nReturning to the Main Menu...");
+                            Main.sysPause();
+                            break;
+                        default:
+                            System.out.println("Invalid Input! \n Exiting Program...");
+                            Main.sysPause();
+                            System.exit(0);
+
                     }
                 }
             }
         }
     }
+
     static void delete_student() {
         System.out.println("====================================================");
         System.out.println("\t\t\t\t<< DELETE STUDENT >>");
@@ -365,11 +359,7 @@ public class Student extends Person {
         if (studentList.size() == 0) {
             System.out.println("There are no Students registered in the database!");
             System.out.println("Returning to the Main Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             return;
         } else {
             Scanner in = new Scanner(System.in);
@@ -392,7 +382,7 @@ public class Student extends Person {
         System.out.println("====================================================\n");
 
         if(studentList.size() == 0){
-            System.out.println("There are no Students registered in the database!");
+            System.out.println("There are no STUDENTS registered in the database!");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -411,19 +401,15 @@ public class Student extends Person {
             for (int i = 0; i < studentList.size(); i++) {
                 if (deposit_ID == studentList.get(i).getID()) {
                     double y = studentList.get(i).getBalance();
-                    //y - dep_amount = studentList.get(i).setBalance();
+                    double updatedDeposit = y - dep_amount;
+                    studentList.get(i).setBalance(updatedDeposit);
+                    System.out.println("Your new balance is " + studentList.get(i).getBalance());
                 }
             }
 
             System.out.println("Payment Successfully Posted!");
             System.out.println("Returning to the Student Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            Main.menu_student();
-
+            Main.sysPause();
         }
     }
     static void showZero(){
@@ -434,11 +420,7 @@ public class Student extends Person {
         if (studentList.size() == 0) {
             System.out.println("There are no Students registered in the database!");
             System.out.println("Returning to the Main Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             return;
         }
         else {
@@ -455,31 +437,19 @@ public class Student extends Person {
 
         if (x == 'Y'){
             System.out.println("\nReturning to the Main Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             Main.menu_ST();
             Main.menu(Main.choice());
         }
         else if (x == 'N'){
             System.out.println("\nThank you for using our program! Bouncing...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             System.exit(0);
         }
         // needs testing
         else {
             System.out.println("\nInvalid Input!");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             return;
         }
     }
@@ -491,11 +461,7 @@ public class Student extends Person {
         if (studentList.size() != 0) {
             System.out.println("There are no Students registered in the database!");
             System.out.println("Returning to the Main Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             return;
         }
         else {
@@ -512,31 +478,19 @@ public class Student extends Person {
 
         if (x == 'Y'){
             System.out.println("\nReturning to the Main Menu...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             Main.menu_ST();
             Main.menu(Main.choice());
         }
         else if (x == 'N'){
             System.out.println("\nThank you for using our program! Bouncing...");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             System.exit(0);
         }
         // needs testing
         else {
             System.out.println("\nInvalid Input!");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Main.sysPause();
             return;
         }
     }

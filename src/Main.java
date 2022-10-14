@@ -16,7 +16,7 @@ public class Main {
         Student.studentList.add(student2);
         Student student3 = new Student(3,"Jethro3","Roxas","m","1212121210","jan",3,1,3343);
         Student.studentList.add(student3);
-        Student student4 = new Student(4,"Jethro4","Roxas","m","10323232","jan",2,1,32343);
+        Student student4 = new Student(4,"Jethro4","Roxas","m","10323232","jan",2,1,32343,9000, 90);
         Student.studentList.add(student4);
 
 
@@ -42,8 +42,6 @@ public class Main {
         System.out.println("[2] Teacher");
         System.out.println("\n[0] Exit Program");
         System.out.println("\n====================================================\n");
-
-
     }
     static void menu_student(){
         System.out.println("\n====================================================");
@@ -83,13 +81,14 @@ public class Main {
                 case 1: // student menu
                     menu_student();
                     stud(choice());
-
                     break;
                 case 2: // teacher menu
                     menu_teacher();
                     teach(choice());
                     break;
                 case 0: // program exit
+                    System.out.println("Thank you for using our program! Exiting now...");
+                    Main.sysPause();
                     System.exit(0);
                 default:
                     System.out.println("\nOops... wrong input!");
@@ -118,19 +117,19 @@ public class Main {
                 break;
             case 4:
                 // show balance
-                //Student.show_balance();
+                Student.show_balance();
                 break;
             case 5:
                 // fee deposit
-                //Student.deposit();
+                Student.deposit();
                 break;
             case 6:
                 // display zero bal
-                //Student.showZero();
+                Student.showZero();
                 break;
             case 7:
                 // display non zero
-                //Student.showNonZero();
+                Student.showNonZero();
                 break;
             case 8:
                 // return to Main Menu
@@ -172,11 +171,7 @@ public class Main {
                 break;
             default:
                 System.out.println("Invalid input!");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                Main.sysPause();
                 break;
         }
     }

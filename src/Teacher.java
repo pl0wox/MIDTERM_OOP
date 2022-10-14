@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class Teacher extends Person {
     private String department, designation;
-    private double teachingHours;
+    private double teachingHours, salary;
 
     public static List<Teacher> teacherList = new ArrayList<>();
 
-    public Teacher(int ID, String Fname, String Lname, String Gender, String PhoneNum, String Address, String department, String designation, double teachingHours) {
+    public Teacher(int ID, String Fname, String Lname, String Gender, String PhoneNum, String Address, String department, String designation, double teachingHours, double salary) {
         super(ID, Fname, Lname, Gender, PhoneNum, Address);
         this.department = department;
         this.designation = designation;
         this.teachingHours = teachingHours;
+        this.salary = salary;
     }
 
 
@@ -36,6 +37,12 @@ public class Teacher extends Person {
     }
     public void setTeachingHours(){
         this.teachingHours = teachingHours;
+    }
+    public double getTeachSalary(){
+        return salary;
+    }
+    public void setTeachSalary(double salary){
+        this.salary = salary;
     }
 
     static void add_teacher(){
@@ -112,7 +119,8 @@ public class Teacher extends Person {
         double addteachingHours = in.nextDouble();
 
         // store all inputs of user inside the constructor
-        Teacher teacherobj = new Teacher(addID,addFirstname,addLastname,addGender,addPhone,addAddress,addDepartment,addDesignation,addteachingHours);
+
+        //Teacher teacherobj = new Teacher(addID,addFirstname,addLastname,addGender,addPhone,addAddress,addDepartment,addDesignation,addteachingHours, salary);
 
         // store inside the array list
         teacherList.add(teacherobj);
@@ -164,9 +172,21 @@ public class Teacher extends Person {
             return;
         }
         else{
+            Scanner in = new Scanner(System.in);
+            System.out.print("Enter Student ID (ex. 202110139): ");
+            int d_ID = in.nextInt();
+/* SANDALE
+            if () {
+
+            }
+            else{
+
+            }
             // insert here
+            */
         }
     }
+
     static void display(){
         System.out.println("====================================================");
         System.out.println("\t\t\t\t<< TEACHERS INDEX >>");
