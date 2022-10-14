@@ -17,7 +17,7 @@ public class Teacher extends Person {
 
     static void add_teacher(){
         System.out.println("====================================================");
-        System.out.println("\t\t\t\t<< ADD NEW TEACHER >>");
+        System.out.println("\t\t\t\t<< ADD NEW TEACHER >>"); //weh
         System.out.println("====================================================\n");
 
 
