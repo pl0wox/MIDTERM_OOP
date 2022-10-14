@@ -430,28 +430,7 @@ public class Student extends Person {
                 }
             }
         }
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Back to Main Menu? [Y/N]");
-        int x = in.nextInt();
-
-        if (x == 'Y'){
-            System.out.println("\nReturning to the Main Menu...");
-            Main.sysPause();
-            Main.menu_ST();
-            Main.menu(Main.choice());
-        }
-        else if (x == 'N'){
-            System.out.println("\nThank you for using our program! Bouncing...");
-            Main.sysPause();
-            System.exit(0);
-        }
-        // needs testing
-        else {
-            System.out.println("\nInvalid Input!");
-            Main.sysPause();
-            return;
-        }
+        Main.YN_Exit();
     }
     static void showNonZero(){
         System.out.println("====================================================");
@@ -471,28 +450,7 @@ public class Student extends Person {
                 }
             }
         }
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Back to Main Menu? [Y/N]");
-        int x = in.nextInt();
-
-        if (x == 'Y'){
-            System.out.println("\nReturning to the Main Menu...");
-            Main.sysPause();
-            Main.menu_ST();
-            Main.menu(Main.choice());
-        }
-        else if (x == 'N'){
-            System.out.println("\nThank you for using our program! Bouncing...");
-            Main.sysPause();
-            System.exit(0);
-        }
-        // needs testing
-        else {
-            System.out.println("\nInvalid Input!");
-            Main.sysPause();
-            return;
-        }
+        Main.YN_Exit();
     }
 
 
