@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Teacher extends Person {
     private String department, designation;
     private double teachingHours, salary;
+    final double base_salary = 1200.00, OT = 325;
+
 
     public static List<Teacher> teacherList = new ArrayList<>();
 
-    public Teacher(int ID, String Fname, String Lname, String Gender, String PhoneNum, String Address, String department, String designation, double teachingHours, double salary) {
+    public Teacher(int ID, String Fname, String Lname, String Gender, String PhoneNum, String Address, String department, String designation, double teachingHours, double salary, double base_salary, double OT) {
         super(ID, Fname, Lname, Gender, PhoneNum, Address);
         this.department = department;
         this.designation = designation;
@@ -174,16 +176,27 @@ public class Teacher extends Person {
         else{
             Scanner in = new Scanner(System.in);
             System.out.print("Enter Student ID (ex. 202110139): ");
-            int d_ID = in.nextInt();
-/* SANDALE
-            if () {
+            int salary_ID = in.nextInt();
 
-            }
-            else{
 
+
+            for (int k = 0; k < teacherList.size(); k++) {
+                if(salary_ID == teacherList.get(k).getID()) {
+
+                    //double salary = ;
+                    //teacherList.get(k).setTeachSalary(salary);
+
+                    System.out.println("ID NUMBER " + salary_ID);
+                    System.out.println("Salary: " + teacherList.get(k).getTeachSalary());
+                    Main.YN_Exit();
+                }
+                else{
+                    System.out.println("ID not found!");
+                    Main.sysPause();
+                }
+                return;
             }
-            // insert here
-            */
+
         }
     }
 
@@ -202,10 +215,11 @@ public class Teacher extends Person {
             System.out.println("\tID\tTEACHER NAME");
             for (int i = 0; i < teacherList.size(); i++) {
                 if (teacherList.get(i).getID() != 0) {
-                    System.out.println("\nTeacher# " + teacherList.get(i).getID() + " : " + teacherList.get(i).getFName() + " " + teacherList.get(i).getLName());
+                    System.out.println("\nTeacher ID# " + teacherList.get(i).getID() + " : " + teacherList.get(i).getFName() + " " + teacherList.get(i).getLName());
                 }
             }
         }
 
+        Main.YN_Exit();
     }
 }

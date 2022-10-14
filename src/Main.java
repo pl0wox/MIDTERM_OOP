@@ -33,6 +33,29 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+    static void YN_Exit(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Back to Main Menu? [Y/N]");
+        int x = in.nextInt();
+
+        if (x == 'Y'){
+            System.out.println("\nReturning to the Main Menu...");
+            Main.sysPause();
+            Main.menu_ST();
+            Main.menu(Main.choice());
+        }
+        else if (x == 'N'){
+            System.out.println("\nThank you for using our program! Bouncing...");
+            Main.sysPause();
+            System.exit(0);
+        }
+        // needs testing
+        else {
+            System.out.println("\nInvalid Input!");
+            Main.sysPause();
+            return;
+        }
+    }
     static void menu_ST(){
         System.out.println("====================================================");
         System.out.println("\t\t\t   << ABC COLLEGE INC. >>");      // tab = 4 spaces
