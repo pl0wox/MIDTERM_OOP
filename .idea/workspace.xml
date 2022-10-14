@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d166c190-3c91-4f9a-a627-376b32e91083" name="Changes" comment="">
+    <list default="true" id="d166c190-3c91-4f9a-a627-376b32e91083" name="Changes" comment="commented &quot;hello find me&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665477227182</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="commented &quot;hello find me&quot;">
+      <created>1665718421390</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665718421390</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,7 +157,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="Transfered student methods from Main.java to Student.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transfered student methods from Main.java to Student.java" />
+    <MESSAGE value="commented &quot;hello find me&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="commented &quot;hello find me&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
