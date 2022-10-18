@@ -2,8 +2,6 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList; // import the ArrayList class
-import java.util.*;
 
 public class Main {
 
@@ -35,16 +33,16 @@ public class Main {
     }
     static void YN_Exit(){
         Scanner in = new Scanner(System.in);
-        System.out.println("Back to Main Menu? [Y/N]");
-        int x = in.nextInt();
+        System.out.print("Back to Main Menu? [Y/N]");
+        String x = in.next();
 
-        if (x == 'Y'){
+        if (x.contains("Y") || x.contains("y")){
             System.out.println("\nReturning to the Main Menu...");
             Main.sysPause();
             Main.menu_ST();
             Main.menu(Main.choice());
         }
-        else if (x == 'N'){
+        else if (x.contains("N") || x.contains("n")){
             System.out.println("\nThank you for using our program! Bouncing...");
             Main.sysPause();
             System.exit(0);
@@ -53,7 +51,6 @@ public class Main {
         else {
             System.out.println("\nInvalid Input!");
             Main.sysPause();
-            return;
         }
     }
     static void menu_ST(){
@@ -80,6 +77,9 @@ public class Main {
         System.out.println("[8] Go back to Main Menu\n");
     }
     static void menu_teacher(){
+        System.out.println("\n====================================================");
+        System.out.println("\t\t\t\t\t<< TEACHER >>");      // tab = 4 spaces
+        System.out.println("====================================================\n");
         System.out.println("[1] Add new Teacher");
         System.out.println("[2] Update Teacher");
         System.out.println("[3] Delete Teacher");
@@ -125,18 +125,16 @@ public class Main {
     static void stud(int c){
         switch (c){
             case 1:
+                // add student
                 Student.add_student();
                 break;
             case 2:
+                // update student
                 Student.update_student();
                 break;
             case 3:
+                // delete student
                 Student.delete_student();
-                /*
-                for(int i = 0; i < studentList.size(); i++){
-                    System.out.println(studentList.get(i).getFName());
-                }
-                 */
                 break;
             case 4:
                 // show balance
