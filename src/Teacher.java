@@ -40,14 +40,22 @@ public class Teacher extends Person {
         Scanner in = new Scanner(System.in).useDelimiter("\n");
 
         System.out.print("Enter ID: ");
-        int addID = in.nextInt();
+        int addID = 0;
 
-        // Validation for Teacher ID
-        for(int i = 0; i < teacherList.size(); i++){
-            if(addID == teacherList.get(i).getID()){
-                System.out.println("ID already registered!");
-                return;
+        if(in.hasNextInt()){
+            addID = in.nextInt();
+            for (int i = 0; i < teacherList.size(); i++) {
+                if (addID == teacherList.get(i).getID()) {
+                    System.out.println("ID is already registered!");
+                    Main.sysPause();
+                    return;
+                }
             }
+        }
+        else {
+            System.out.println("Please enter a valid input!");
+            Main.sysPause();
+            return;
         }
 
         System.out.print("Enter First Name: ");

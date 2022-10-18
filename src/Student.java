@@ -46,15 +46,25 @@ public class Student extends Person {
         Scanner in = new Scanner(System.in).useDelimiter("\n");
 
         System.out.print("Enter ID: ");
-        int addID = in.nextInt();
+
+        // Initalize addID variable to zero to only accept integer values
+        int addID = 0;
 
         // Validation for Student ID
-        for (int i = 0; i < studentList.size(); i++) {
-            if (addID == studentList.get(i).getID()) {
-                System.out.println("ID is already registered!");
-                Main.sysPause();
-                return;
+        if(in.hasNextInt()){
+            addID = in.nextInt();
+            for (int i = 0; i < studentList.size(); i++) {
+                if (addID == studentList.get(i).getID()) {
+                    System.out.println("ID is already registered!");
+                    Main.sysPause();
+                    return;
+                }
             }
+        }
+        else {
+            System.out.println("Please enter a valid input!");
+            Main.sysPause();
+            return;
         }
 
         System.out.print("Enter First Name: ");
@@ -92,6 +102,13 @@ public class Student extends Person {
 
         System.out.print("Enter Amount Paid: ");
         double addAmount = in.nextDouble();
+
+        if(addAmount > total_amount){
+            System.out.println("Cannot pay more than " + total_amount);
+            Main.sysPause();
+            return;
+        }
+
         double balance = total_amount - addAmount;
 
         System.out.print("\n\t\t\t\t   Account Status ");
