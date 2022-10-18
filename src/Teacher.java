@@ -294,8 +294,30 @@ public class Teacher extends Person {
                             System.out.println("\t\t\t\t<< UPDATE TEACHING HOURS  >>");
                             System.out.println("====================================================\n");
 
-                            System.out.println("Update Teaching Hours: ");
+                            System.out.print("Update Teaching Hours: ");
                             double updateTeachingHours = in.nextDouble();
+
+                            if(teacherList.get(i).getDesignation().contains("Head of Faculty")){
+                                if(updateTeachingHours < 8){
+                                    System.out.println("Minimum requirement not met");
+                                    Main.sysPause();
+                                    return;
+                                }
+                            }
+                            if(teacherList.get(i).getDesignation().contains("Coordinator")){
+                                if(updateTeachingHours < 13){
+                                    System.out.println("Minimum requirement not met");
+                                    Main.sysPause();
+                                    return;
+                                }
+                            }
+                            if(teacherList.get(i).getDesignation().contains("Lecturer")){
+                                if(updateTeachingHours < 18){
+                                    System.out.println("Minimum requirement not met");
+                                    Main.sysPause();
+                                    return;
+                                }
+                            }
 
                             teacherList.get(i).setTeachingHours(updateTeachingHours);
                             System.out.println("\nTeachingHours has been updated!");
