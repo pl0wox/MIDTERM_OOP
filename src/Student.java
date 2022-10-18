@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Student extends Person {
     private int numOfModules, numOfRepeatModules;
     private double amount_paid, total_amount, balance, dep_amount;
-    final int ModulePrice = 525;
-    final int RepeatedModulePrice = 110;
+    private static final int ModulePrice = 525, RepeatedModulePrice = 110;
 
     public static List<Student> studentList = new ArrayList<>();
 
@@ -92,7 +91,7 @@ public class Student extends Person {
         System.out.println("Total: " + total_amount);
 
         System.out.print("Enter Amount Paid: ");
-        double addAmount = in.nextInt();
+        double addAmount = in.nextDouble();
         double balance = total_amount - addAmount;
 
         System.out.print("\n\t\t\t\t   Account Status ");
@@ -157,7 +156,7 @@ public class Student extends Person {
 
                             for (int k = 0; k < studentList.size(); k++) {
                                 if (updateID == studentList.get(k).getID()) {
-                                    System.out.println(updateID + " is already registered! Please try again.");
+                                    System.out.println(updateID + " is already registered! please try again");
                                     Main.sysPause();
                                     return;
                                 }
@@ -190,24 +189,32 @@ public class Student extends Person {
                             System.out.println("\t\t\t << UPDATE STUDENT GENDER >>");
                             System.out.println("====================================================\n");
 
-                                System.out.print("");
-                                break;
-                            case 4:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t  << UPDATE PHONE NUMBER >>");
-                                System.out.println("====================================================\n");
+                            System.out.printf("Enter Gender: ");
+                            String updateGender = in.next();
 
-                                System.out.print("Enter your new Phone Number: ");
-                                String newPhone = in.next();
+                            studentList.get(i).setGender(updateGender);
+                            System.out.printf("\nStudent's Gender has been updated!");
+                            Main.sysPause();
+                            break;
 
-                                // setter (setPhoneNum) used to update the current phone number
-                                studentList.get(i).setPhoneNum(newPhone);
-                                System.out.println("\nPhone Number has been updated!");
-                                break;
-                            case 5:
-                                System.out.println("====================================================");
-                                System.out.println("\t\t\t\t<< UPDATE ADDRESS >>");
-                                System.out.println("====================================================\n");
+                        case 4:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t  << UPDATE PHONE NUMBER >>");
+                            System.out.println("====================================================\n");
+
+                            System.out.print("Enter your new Phone Number: ");
+                            String updatePhone = in.next();
+
+                            // setter (setPhoneNum) used to update the current phone number
+                            studentList.get(i).setPhoneNum(updatePhone);
+                            System.out.println("\nPhone Number has been updated!");
+                            Main.sysPause();
+                            break;
+
+                        case 5:
+                            System.out.println("====================================================");
+                            System.out.println("\t\t\t\t<< UPDATE ADDRESS >>");
+                            System.out.println("====================================================\n");
 
                             System.out.print("Enter your new Address: ");
                             String newAddress = in.next();
@@ -222,17 +229,20 @@ public class Student extends Person {
                             System.out.println("\t\t\t\t<< UPDATE MODULES >>");
                             System.out.println("====================================================\n");
 
-                                System.out.print("Update Number Modules: ");
-                                int newModules = in.nextInt();
+                            System.out.print("Update Number Modules: ");
+                            int updateModules = in.nextInt();
 
-                                // check if user still takes 6 module
-                                if (newModules + studentList.get(i).getNumOfModules() > 6) {
-                                    System.out.println("Cannot take more than 6 total modules");
-                                } else {
-                                    studentList.get(i).setNumOfModules(newModules);
-                                    System.out.println("\nModules Have been updated!");
-                                }
-                                break;
+                            // check if user still takes 6 module
+                            if (updateModules + studentList.get(i).numOfRepeatModules > 6) {
+                                System.out.println("Cannot take more than 6 total modules");
+                                Main.sysPause();
+                                return;
+                            } else {
+                                studentList.get(i).setNumOfModules(updateModules);
+                                System.out.println("\nModules Have been updated!");
+                                Main.sysPause();
+                            }
+                            break;
 
                         case 7:
                             System.out.println("====================================================");
@@ -243,7 +253,7 @@ public class Student extends Person {
                             int updateRepeatedModules = in.nextInt();
 
                             // check if user still takes 6 module
-                            if(studentList.get(i).numOfModules!=0 && updateRepeatedModules>2){
+                            if(studentList.get(i).numOfModules !=0 && updateRepeatedModules > 2){
                                 System.out.println("Cannot take more than 2 repeated modules!");
                                 Main.sysPause();
                                 return;
@@ -255,7 +265,7 @@ public class Student extends Person {
                             }
                             else{
                                 studentList.get(i).setRep_modules(updateRepeatedModules);
-                                System.out.println("\n Repeated Modules have been Updated!");
+                                System.out.println("\n Repeated Modules have been Updated");
                                 Main.sysPause();
                             }
                             break;
@@ -293,6 +303,7 @@ public class Student extends Person {
                 if (studentList.get(i).getID() == delID) {
                     System.out.println(studentList.get(i).getID() + " has been removed from the database!!");
                     studentList.remove(i);
+
 
                     if (studentList.lastIndexOf(i) == delID) {
                         System.out.println(studentList.get(i).getID() + " has been removed from the database!!");

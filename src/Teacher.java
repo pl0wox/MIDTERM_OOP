@@ -87,9 +87,22 @@ public class Teacher extends Person {
         System.out.println("[3] Lecturer        (L)");
 
         String addDesignation = "";
+
+        double addteachingHours = 0.00;
+        double addot_salary = 0;
         switch (Main.choice()){
             case 1:
                 addDesignation = "Head of Faculty";
+                System.out.print("Enter no. of teaching hours: ");
+                addteachingHours = in.nextDouble();
+                if(addteachingHours < 8){
+                    System.out.println("Minimum requirement not met!");
+                    Main.sysPause();
+                    return;
+                }
+                else{
+                    addot_salary = OT * (addteachingHours-8);
+                }
                 break;
             case 2:
                 addDesignation = "Coordinator";
@@ -339,6 +352,7 @@ public class Teacher extends Person {
             int salary_ID = in.nextInt();
 
             for (int k = 0; k < teacherList.size(); k++) {
+
                 if(salary_ID == teacherList.get(k).getID()) {
 
                     // computation
@@ -380,7 +394,7 @@ public class Teacher extends Person {
         else{
             System.out.println("\tID\tTEACHER NAME");
             for (int i = 0; i < teacherList.size(); i++) {
-                    System.out.println("\nTeacher ID# " + teacherList.get(i).getID() + " : " + teacherList.get(i).getFName() + " " + teacherList.get(i).getLName() + " | " + teacherList.get(i).getDepartment() + " - " + teacherList.get(i).getDesignation());
+                System.out.println("\nTeacher ID# " + teacherList.get(i).getID() + " : " + teacherList.get(i).getFName() + " " + teacherList.get(i).getLName() + " | " + teacherList.get(i).getDepartment() + " - " + teacherList.get(i).getDesignation());
             }
             Main.YN_Exit();
         }
