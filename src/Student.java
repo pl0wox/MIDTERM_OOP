@@ -27,18 +27,8 @@ public class Student extends Person {
     public int getRep_modules() {  return numOfRepeatModules;  }
     public void setRep_modules(int numOfRepeatModules) {  this.numOfRepeatModules = numOfRepeatModules;  }
 
-
-    public double getAmount_paid() {  return amount_paid;  }
-    public void setAmount_paid(double amount_paid) {  this.amount_paid = amount_paid;  }
-
-    public double getTotal(){  return total_amount;  }
-    public void setTotal(){  this.total_amount = total_amount;  }
     public double getBalance(){  return balance;  }
     public double setBalance(double balance){  this.balance = balance; return 0; }
-
-    public double getDep_amount() {  return dep_amount;  }
-    public void setDep_amount(double dep_amount) {  this.dep_amount = dep_amount;  }
-
 
     static void add_student() {
         System.out.println("====================================================");
@@ -92,28 +82,33 @@ public class Student extends Person {
         int addModules = 0;
         int addRepModules = 0;
              while(running) {
-                // Constraint the user to only input less than or equal than 6 modules
-
                  System.out.print("Enter Number of Modules: ");
-                 addModules = in.nextInt();
+                 if(in.hasNextInt()){
+                     addModules = in.nextInt();
 
-                 System.out.print("Enter Number of Repeated Modules: ");
-                 addRepModules = in.nextInt();
+                     System.out.print("Enter Number of Repeated Modules: ");
+                     addRepModules = in.nextInt();
 
-                if ((addModules + addRepModules) > 6) {
-                    System.out.println("You cannot get more than 6 modules for this semester!");
-                    Main.sysPause();
-                    in = new Scanner(System.in).useDelimiter("\n");
-                    running = true;
+                     if ((addModules + addRepModules) > 6) {
+                         System.out.println("You cannot get more than 6 modules for this semester!");
+                         Main.sysPause();
+                         in = new Scanner(System.in).useDelimiter("\n");
+                         running = true;
 
-                    running = true;
-                } else if (addModules != 0 && addRepModules > 2) {
-                    System.out.println("You cannot take a new module if you want to take more than 2 repeated modules this semester!");
-                    Main.sysPause();
-                    in = new Scanner(System.in).useDelimiter("\n");
-                    running = true;
-                }
-                else {running = false;}
+                     } else if (addModules != 0 && addRepModules > 2) {
+                         System.out.println("You cannot take a new module if you want to take more than 2 repeated modules this semester!");
+                         Main.sysPause();
+                         in = new Scanner(System.in).useDelimiter("\n");
+                         running = true;
+                     }
+                     else {running = false;}
+                 }
+                 else {
+                     System.out.println("Please enter a valid input!");
+                     Main.sysPause();
+                     in = new Scanner(System.in).useDelimiter("\n");
+                     running = true;
+                 }
             }running = true;
 
 
@@ -263,19 +258,32 @@ public class Student extends Person {
                             System.out.println("\t\t\t\t<< UPDATE MODULES >>");
                             System.out.println("====================================================\n");
 
-                            System.out.print("Update Number Modules: ");
-                            int updateModules = in.nextInt();
+                            int updateModules;
 
-                            // check if user still takes 6 module
-                            if (updateModules + studentList.get(i).numOfRepeatModules > 6) {
-                                System.out.println("Cannot take more than 6 total modules");
-                                Main.sysPause();
-                                return;
-                            } else {
-                                studentList.get(i).setNumOfModules(updateModules);
-                                System.out.println("\nModules Have been updated!");
-                                Main.sysPause();
-                            }
+                            while(running) {
+                                System.out.print("Update Number Modules: ");
+                                if(in.hasNextInt()) {
+                                    updateModules = in.nextInt();
+                                    // check if user still takes 6 module
+                                    if (updateModules + studentList.get(i).numOfRepeatModules > 6) {
+                                        System.out.println("Cannot take more than 6 total modules");
+                                        Main.sysPause();
+                                        running = true;
+
+                                    } else {
+                                        studentList.get(i).setNumOfModules(updateModules);
+                                        System.out.println("\nModules Have been updated!");
+                                        Main.sysPause();
+                                        running = false;
+                                    }
+                                }
+                                else{
+                                    System.out.println("Please enter a numerical number");
+                                    Main.sysPause();
+                                    in = new Scanner(System.in).useDelimiter("\n");
+                                    running = true;
+                                }
+                            }running = true;
                             break;
 
                         case 7:
@@ -283,25 +291,35 @@ public class Student extends Person {
                             System.out.println("\t\t\t<< UPDATE REPEATED MODULES >>");
                             System.out.println("====================================================\n");
 
-                            System.out.println("Update Repeated Modules: ");
-                            int updateRepeatedModules = in.nextInt();
 
-                            // check if user still takes 6 module
-                            if(studentList.get(i).numOfModules !=0 && updateRepeatedModules > 2){
-                                System.out.println("Cannot take more than 2 repeated modules!");
-                                Main.sysPause();
-                                return;
-                            }
-                            else if((updateRepeatedModules + studentList.get(i).numOfModules) > 6){
-                                System.out.println("Cannot take more than 6 total modules!");
-                                Main.sysPause();
-                                return;
-                            }
-                            else{
-                                studentList.get(i).setRep_modules(updateRepeatedModules);
-                                System.out.println("\n Repeated Modules have been Updated");
-                                Main.sysPause();
-                            }
+                            int updateRepeatedModules;
+                            while(running) {
+                                System.out.print("Update Repeated Modules: ");
+                                if (in.hasNextInt()) {
+                                    updateRepeatedModules = in.nextInt();
+
+                                    // check if user still takes 6 module
+                                    if (studentList.get(i).numOfModules != 0 && updateRepeatedModules > 2) {
+                                        System.out.println("Cannot take more than 2 repeated modules!");
+                                        Main.sysPause();
+                                        running = true;
+                                    } else if ((updateRepeatedModules + studentList.get(i).numOfModules) > 6) {
+                                        System.out.println("Cannot take more than 6 total modules!");
+                                        Main.sysPause();
+                                        running = true;
+                                    } else {
+                                        studentList.get(i).setRep_modules(updateRepeatedModules);
+                                        System.out.println("\nRepeated Modules have been Updated");
+                                        Main.sysPause();
+                                        running = false;
+                                    }
+                                } else {
+                                    System.out.println("Please enter a numerical number");
+                                    Main.sysPause();
+                                    in = new Scanner(System.in).useDelimiter("\n");
+                                    running = true;
+                                }
+                            }running = true;
                             break;
 
                         case 8:

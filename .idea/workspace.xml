@@ -4,7 +4,6 @@
     <list default="true" id="d166c190-3c91-4f9a-a627-376b32e91083" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +16,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="main" />
@@ -67,6 +69,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
