@@ -15,16 +15,16 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-    static void YN_Exit(){
+    static void YNS_Exit(){
         Scanner in = new Scanner(System.in);
-        System.out.print("Back to Main Menu? [Y/N]");
+        System.out.print("\nBack to Student Menu? [Y/N]: ");
         String x = in.next();
 
         if (x.contains("Y") || x.contains("y")){
-            System.out.println("\nReturning to the Main Menu...");
+            System.out.println("\nReturning to the Student Menu...");
             Main.sysPause();
-            Main.menu_ST();
-            Main.menu(Main.choice());
+            Main.menu_student();
+            Main.stud(Main.choice());
         }
         else if (x.contains("N") || x.contains("n")){
             System.out.println("\nThank you for using our program! Bouncing...");
@@ -32,6 +32,27 @@ public class Main {
             System.exit(0);
         }
         // needs testing
+        else {
+            System.out.println("\nInvalid Input!");
+            Main.sysPause();
+        }
+    }
+    static void YNT_Exit(){
+        Scanner in = new Scanner(System.in);
+        System.out.print("\nBack to Teacher Menu? [Y/N]: ");
+        String x = in.next();
+
+        if (x.contains("Y") || x.contains("y")){
+            System.out.println("\nReturning to the Teacher Menu...");
+            Main.sysPause();
+            Main.menu_teacher();
+            Main.teach(Main.choice());
+        }
+        else if (x.contains("N") || x.contains("n")){
+            System.out.println("\nThank you for using our program! Bouncing...");
+            Main.sysPause();
+            System.exit(0);
+        }
         else {
             System.out.println("\nInvalid Input!");
             Main.sysPause();

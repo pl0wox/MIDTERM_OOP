@@ -1,14 +1,9 @@
 public class Person {
-
     private int ID;
     private String FName, LName, PhoneNum, Gender, Address;
 
-    public int getID() {
-        return ID;
-    }
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+    public int getID() {  return ID;  }
+    public void setID(int ID) {  this.ID = ID;  }
 
     public String getPhoneNum() {  return PhoneNum;  }
     public void setPhoneNum(String phoneNum) {  PhoneNum = phoneNum;  }
@@ -34,5 +29,4 @@ public class Person {
         this.Gender = Gender;
         this.Address = Address;
     }
-
 }
