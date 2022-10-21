@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Teacher extends Person {
     private String department, designation;
     private double teachingHours, net_salary, ot_salary;
+
+    public static boolean running = true;
     private static final double base_salary=1200.00, OT=325, ha=0.1, ma=0.03, ta=0.05;
     public static List<Teacher> teacherList = new ArrayList<>();
 
@@ -39,119 +41,151 @@ public class Teacher extends Person {
 
         Scanner in = new Scanner(System.in).useDelimiter("\n");
 
-        System.out.print("Enter ID: ");
         int addID = 0;
+        boolean designationrunning = true;
 
-        if(in.hasNextInt()){
-            addID = in.nextInt();
-            for (int i = 0; i < teacherList.size(); i++) {
-                if (addID == teacherList.get(i).getID()) {
-                    System.out.println("ID is already registered!");
-                    Main.sysPause();
-                    return;
+        while(running) {
+            System.out.print("Enter ID: ");
+
+            if (in.hasNextInt()) {
+                addID = in.nextInt();
+                running = false;
+                for (int i = 0; i < teacherList.size(); i++) {
+                    if (addID == teacherList.get(i).getID()) {
+                        System.out.println("ID is already registered!");
+                        Main.sysPause();
+                        in = new Scanner(System.in).useDelimiter("\n");
+                        running = true;
+                    }
+                }
+            } else {
+                System.out.println("Please enter a valid input!");
+                Main.sysPause();
+                in = new Scanner(System.in).useDelimiter("\n");
+                running = true;
+            }
+        }running = true;
+            System.out.print("Enter First Name: ");
+            String addFirstname = in.next();
+
+            System.out.print("Enter Last Name: ");
+            String addLastname = in.next();
+
+            System.out.print("Enter Gender: ");
+            String addGender = in.next();
+
+            System.out.print("Enter Phone Number: ");
+            String addPhone = in.next();
+
+            System.out.print("Enter Address: ");
+            String addAddress = in.next();
+
+            System.out.println("Enter Department: ");
+            System.out.println("[1] Business");
+            System.out.println("[2] Computing");
+
+            String addDepartment = "";
+
+            while(running) {
+                switch (Main.choice()) {
+                    case 1:
+                        addDepartment = "Business";
+                        running = false;
+                        break;
+                    case 2:
+                        addDepartment = "Computing";
+                        running = false;
+                        break;
+                    default:
+                        System.out.println("Please Enter a valid Input!");
+                        running = true;
+                }
+            }running = true;
+
+            System.out.println("\nEnter Designation: ");
+            System.out.println("[1] Head of Faculty (HOF)");
+            System.out.println("[2] Coordinator     (CO)");
+            System.out.println("[3] Lecturer        (L)");
+
+            String addDesignation = "";
+            double addteachingHours = 0.00;
+            double addot_salary = 0;
+
+            while(designationrunning) {
+                switch (Main.choice()) {
+                    case 1:
+                        addDesignation = "Head of Faculty";
+                        while (running) {
+                            System.out.print("Enter no. of teaching hours (8 Minimum hours) : ");
+                            addteachingHours = in.nextDouble();
+
+                            if (addteachingHours < 8) {
+                                System.out.println("Minimum requirement not met!");
+                                Main.sysPause();
+                                running = true;
+                            } else {
+                                addot_salary = OT * (addteachingHours - 8);
+                                designationrunning = false;
+                                break;
+                            }
+                        }
+                        running = true;
+                        break;
+
+                    case 2:
+                        addDesignation = "Coordinator";
+                        while (running) {
+                            System.out.print("Enter no. of teaching hours (13 Minimum hours) : ");
+                            addteachingHours = in.nextDouble();
+
+                            if (addteachingHours < 13) {
+                                System.out.println("Minimum requirement not met!");
+                                Main.sysPause();
+                                running = true;
+                            } else {
+                                addot_salary = OT * (addteachingHours - 13);
+                                designationrunning = false;
+                                break;
+                            }
+                        }
+                        running = true;
+                        break;
+                    case 3:
+                        addDesignation = "Lecturer";
+                        while (running) {
+                            System.out.print("Enter no. of teaching hours (18 Minimum hours) :");
+                            addteachingHours = in.nextDouble();
+
+                            if (addteachingHours < 18) {
+                                System.out.println("Minimum requirement not met!");
+                                Main.sysPause();
+                                running = true;
+                            } else {
+                                addot_salary = OT * (addteachingHours - 18);
+                                designationrunning = false;
+                                break;
+                            }
+                        }
+                        running = true;
+                        break;
+                    default:
+                        System.out.println("Please enter a valid input!");
+                        Main.sysPause();
+                        designationrunning = true;
+                        break;
                 }
             }
-        }
-        else {
-            System.out.println("Please enter a valid input!");
-            Main.sysPause();
-            return;
-        }
 
-        System.out.print("Enter First Name: ");
-        String addFirstname = in.next();
+            // store all inputs of user inside the constructor
 
-        System.out.print("Enter Last Name: ");
-        String addLastname = in.next();
+            Teacher teacherobj = new Teacher(addID, addFirstname, addLastname, addGender, addPhone, addAddress, addDepartment, addDesignation, addteachingHours, addot_salary);
 
-        System.out.print("Enter Gender: ");
-        String addGender = in.next();
+             System.out.println("\nTeacher #" + addID + " has been added to the database!");
+             Main.sysPause();
 
-        System.out.print("Enter Phone Number: ");
-        String addPhone = in.next();
+            // store inside the array list
+            teacherList.add(teacherobj);
 
-        System.out.print("Enter Address: ");
-        String addAddress = in.next();
-
-        System.out.println("Enter Department: ");
-        System.out.println("[1] Business");
-        System.out.println("[2] Computing");
-
-        String addDepartment = "";
-        switch (Main.choice()){
-            case 1:
-                addDepartment = "Business";
-                break;
-            case 2:
-                addDepartment = "Computing";
-                break;
-            default:
-                System.out.println("Please Enter a valid Input!");
-        }
-
-        System.out.println("\nEnter Designation: ");
-        System.out.println("[1] Head of Faculty (HOF)");
-        System.out.println("[2] Coordinator     (CO)");
-        System.out.println("[3] Lecturer        (L)");
-
-        String addDesignation = "";
-
-        double addteachingHours = 0.00;
-        double addot_salary = 0;
-        switch (Main.choice()){
-            case 1:
-                addDesignation = "Head of Faculty";
-                System.out.print("Enter no. of teaching hours: ");
-                addteachingHours = in.nextDouble();
-                if(addteachingHours < 8){
-                    System.out.println("Minimum requirement not met!");
-                    Main.sysPause();
-                    return;
-                }
-                else{
-                    addot_salary = OT * (addteachingHours-8);
-                }
-                break;
-            case 2:
-                addDesignation = "Coordinator";
-                System.out.print("Enter no. of teaching hours:");
-                addteachingHours = in.nextDouble();
-                if(addteachingHours < 13){
-                    System.out.println("Minimum requirement not met!");
-                    Main.sysPause();
-                    return;
-                }
-                else{
-                    addot_salary = OT *(addteachingHours-13);
-                }
-                break;
-            case 3:
-                addDesignation = "Lecturer";
-                System.out.print("Enter no. of teaching hours:");
-
-                addteachingHours = in.nextDouble();
-                if(addteachingHours < 18){
-                    System.out.println("Minimum requirement not met!");
-                    Main.sysPause();
-                    return;
-                }
-                else{
-                    addot_salary = OT *(addteachingHours-18);
-
-                }
-                break;
-            default:
-                System.out.println("Please enter a valid input!");
-        }
-
-        // store all inputs of user inside the constructor
-
-        Teacher teacherobj = new Teacher(addID,addFirstname,addLastname,addGender,addPhone,addAddress,addDepartment,addDesignation,addteachingHours, addot_salary);
-
-        // store inside the array list
-        teacherList.add(teacherobj);
-
-        Main.YNT_Exit();
     }
     static void update_teacher(){
         System.out.println("====================================================");
@@ -160,20 +194,14 @@ public class Teacher extends Person {
 
         if (teacherList.size() == 0) {
             System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
             Main.sysPause();
         }
         else{
             Scanner in = new Scanner(System.in).useDelimiter("\n");
+
             System.out.print("Enter ID: ");
             int upID = in.nextInt();
-
-            for (int j = 0; j < teacherList.size(); j++) {
-                if (teacherList.get(j).getID() != upID) {
-                    System.out.println(upID + " does not exist in the database!");
-                    Main.sysPause();
-                    return;
-                }
-            }
 
             for(int i = 0; i < teacherList.size(); i++){
                 if(upID == teacherList.get(i).getID()){
@@ -309,33 +337,37 @@ public class Teacher extends Person {
                             System.out.println("\t\t\t\t<< UPDATE TEACHING HOURS  >>");
                             System.out.println("====================================================\n");
 
-                            System.out.print("Update Teaching Hours: ");
-                            double updateTeachingHours = in.nextDouble();
+                            while (running) {
+                                System.out.print("Update Teaching Hours: ");
+                                double updateTeachingHours = in.nextDouble();
 
-                            if(teacherList.get(i).getDesignation().contains("Head of Faculty")){
-                                if(updateTeachingHours < 8){
-                                    System.out.println("Minimum requirement not met");
-                                    Main.sysPause();
-                                    return;
+                                if (teacherList.get(i).getDesignation().contains("Head of Faculty")) {
+                                    if (updateTeachingHours < 8) {
+                                        System.out.println("Minimum requirement not met 8 Hours or higher!");
+                                        Main.sysPause();
+                                        running = true;
+                                    }
+                                    else{running = false;}
                                 }
-                            }
-                            if(teacherList.get(i).getDesignation().contains("Coordinator")){
-                                if(updateTeachingHours < 13){
-                                    System.out.println("Minimum requirement not met");
-                                    Main.sysPause();
-                                    return;
+                                if (teacherList.get(i).getDesignation().contains("Coordinator")) {
+                                    if (updateTeachingHours < 13) {
+                                        System.out.println("Minimum requirement not met 13 Hours or higher!");
+                                        Main.sysPause();
+                                        running = true;
+                                    }
+                                    else{running = false;}
                                 }
-                            }
-                            if(teacherList.get(i).getDesignation().contains("Lecturer")){
-                                if(updateTeachingHours < 18){
-                                    System.out.println("Minimum requirement not met");
-                                    Main.sysPause();
-                                    return;
+                                if (teacherList.get(i).getDesignation().contains("Lecturer")) {
+                                    if (updateTeachingHours < 18) {
+                                        System.out.println("Minimum requirement not met 18 Hours or higher!");
+                                        Main.sysPause();
+                                        running = true;
+                                    }
+                                    else{running = false;}
                                 }
-                            }
-
-                            teacherList.get(i).setTeachingHours(updateTeachingHours);
-                            System.out.println("\nTeachingHours has been updated!");
+                                teacherList.get(i).setTeachingHours(updateTeachingHours);
+                            }running = true;
+                            System.out.println("\nTeaching Hours has been updated!");
                             Main.sysPause();
                             break;
                     }
@@ -351,9 +383,10 @@ public class Teacher extends Person {
 
         if (teacherList.size() == 0) {
             System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
             Main.sysPause();
-        }
-        else {
+            return;
+        } else {
             Scanner in = new Scanner(System.in);
             System.out.print("Enter Teacher ID (ex. 202110139): ");
             int delID = in.nextInt();
@@ -370,12 +403,10 @@ public class Teacher extends Person {
                 if (teacherList.get(i).getID() == delID) {
                     System.out.println(teacherList.get(i).getID() + " Has been removed from the database!!");
                     teacherList.remove(i);
-                    Main.YNT_Exit();
 
                     if (teacherList.lastIndexOf(i) == delID) {
                         System.out.println(teacherList.get(i).getID() + " Has been removed from the database!!");
                         teacherList.remove(i);
-                        Main.YNT_Exit();
                     }
                 }
             }
@@ -389,6 +420,7 @@ public class Teacher extends Person {
 
         if (teacherList.size() == 0) {
             System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
             Main.sysPause();
         }
         else{
@@ -397,6 +429,7 @@ public class Teacher extends Person {
             int salary_ID = in.nextInt();
 
             for (int k = 0; k < teacherList.size(); k++) {
+
                 if(salary_ID == teacherList.get(k).getID()) {
 
                     // computation
@@ -413,13 +446,15 @@ public class Teacher extends Person {
 
                     System.out.println("\nID NUMBER " + salary_ID);
                     System.out.println("Salary: " + teacherList.get(k).getSalary());
+                    Main.YN_Exit();
                 }
                 else{
                     System.out.println("ID not found!");
                     Main.sysPause();
                 }
+                return;
             }
-            Main.YNT_Exit();
+
         }
     }
 
@@ -430,14 +465,16 @@ public class Teacher extends Person {
 
         if (teacherList.size() == 0) {
             System.out.println("There are no TEACHERS registered in the database!");
+            System.out.println("Returning to the Main Menu...");
             Main.sysPause();
+            return;
         }
         else{
             System.out.println("\tID\tTEACHER NAME");
             for (int i = 0; i < teacherList.size(); i++) {
                 System.out.println("\nTeacher ID# " + teacherList.get(i).getID() + " : " + teacherList.get(i).getFName() + " " + teacherList.get(i).getLName() + " | " + teacherList.get(i).getDepartment() + " - " + teacherList.get(i).getDesignation());
             }
-            Main.YNT_Exit();
+            Main.YN_Exit();
         }
     }
 }
