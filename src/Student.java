@@ -7,8 +7,6 @@ public class Student extends Person {
     private double amount_paid, total_amount, balance, dep_amount;
     private static final int ModulePrice = 525, RepeatedModulePrice = 110;
 
-    public static boolean running = true;
-
     public static List<Student> studentList = new ArrayList<>();
 
     //  Constructor Student
@@ -47,32 +45,27 @@ public class Student extends Person {
 
         Scanner in = new Scanner(System.in).useDelimiter("\n");
 
+        System.out.print("Enter ID: ");
 
-
-        // Initalize addID variable to zero to only accept integer values
+        // Initialize addID variable to zero to only accept integer values
         int addID = 0;
 
-        while(running) {
-            // Validation for Student ID\
-            System.out.print("Enter ID: ");
-            if (in.hasNextInt()) {
-                running = false;
-                addID = in.nextInt();
-                for (int i = 0; i < studentList.size(); i++) {
-                    if (addID == studentList.get(i).getID()) {
-                        System.out.println("ID is already registered!");
-                        Main.sysPause();
-                        in = new Scanner(System.in).useDelimiter("\n");
-                        running = true;
-                    }
+        // Validation for Student ID
+        if(in.hasNextInt()){
+            addID = in.nextInt();
+            for (int i = 0; i < studentList.size(); i++) {
+                if (addID == studentList.get(i).getID()) {
+                    System.out.println("ID is already registered!");
+                    Main.sysPause();
+                    return;
                 }
-            } else {
-                System.out.println("Please enter a valid input!");
-                Main.sysPause();
-                in = new Scanner(System.in).useDelimiter("\n");
-                running = true;
             }
-        }running = true;
+        }
+        else {
+            System.out.println("Please enter a valid input!");
+            Main.sysPause();
+            return;
+        }
 
         System.out.print("Enter First Name: ");
         String addFirstname = in.next();
@@ -89,55 +82,58 @@ public class Student extends Person {
         System.out.print("Enter Address: ");
         String addAddress = in.next();
 
-        int addModules = 0;
-        int addRepModules = 0;
-             while(running) {
-                // Constraint the user to only input less than or equal than 6 modules
+        System.out.print("Enter Number of Modules: ");
+        int addModules = in.nextInt();
 
-                 System.out.print("Enter Number of Modules: ");
-                 addModules = in.nextInt();
+        /* //variable type validation
+        if(in.hasNextInt()) {
 
-                 System.out.print("Enter Number of Repeated Modules: ");
-                 addRepModules = in.nextInt();
-
-                if ((addModules + addRepModules) > 6) {
-                    System.out.println("You cannot get more than 6 modules for this semester!");
-                    Main.sysPause();
-                    in = new Scanner(System.in).useDelimiter("\n");
-                    running = true;
-
-                    running = true;
-                } else if (addModules != 0 && addRepModules > 2) {
-                    System.out.println("You cannot take a new module if you want to take more than 2 repeated modules this semester!");
-                    Main.sysPause();
-                    in = new Scanner(System.in).useDelimiter("\n");
-                    running = true;
-                }
-                else {running = false;}
-            }running = true;
-
-
-
-            double total_amount = (ModulePrice * addModules) + (RepeatedModulePrice * addRepModules);
-            System.out.println("Total: " + total_amount);
-
-            System.out.print("Enter Amount Paid: ");
-            double addAmount = in.nextDouble();
-
-            double balance = total_amount - addAmount;
-
-            System.out.print("\n\t\t\t\t   Account Status ");
-            // Inform user that 1 student has been added
-            System.out.println("\nSuccessfully Added Student #" + addID + " to the Database!");
+        }
+        else {
+            System.out.println("Please enter a valid input!");
             Main.sysPause();
+            return;
+        }
+        */
 
-            // store all inputs of user inside the constructor
-            Student studentobj = new Student(addID, addFirstname, addLastname, addGender, addPhone, addAddress, addModules, addRepModules, addAmount, total_amount, balance);
-
-            // store inside the array list
-            studentList.add(studentobj);
+        System.out.print("Enter Number of Repeated Modules: ");
+        int addRepModules = in.nextInt();
 
 
+        // Constraint the user to only input less than or equal than 6 modules
+        if ((addModules + addRepModules) > 6) {
+            System.out.println("You cannot get more than 6 modules for this semester!");
+            return;
+        } else if (addModules !=0 && addRepModules > 2) {
+            System.out.println("You cannot take a new module if you want to take more than 2 repeated modules this semester!");
+            return;
+        }
+
+        double total_amount = (ModulePrice * addModules) + (RepeatedModulePrice * addRepModules);
+        System.out.println("Total: " + total_amount);
+
+        System.out.print("Enter Amount Paid: ");
+        double addAmount = in.nextDouble();
+
+        if(addAmount > total_amount){
+            System.out.println("Cannot pay more than " + total_amount);
+            Main.sysPause();
+            return;
+        }
+
+        double balance = total_amount - addAmount;
+
+        System.out.print("\n\t\t\t\t   Account Status ");
+        // Inform user that 1 student has been added
+        System.out.println("\nSuccessfully Added Student #" + addID + " to the Database!");
+
+        // store all inputs of user inside the constructor
+        Student studentobj = new Student(addID, addFirstname, addLastname, addGender, addPhone, addAddress, addModules, addRepModules, addAmount, total_amount, balance);
+
+        // store inside the array list
+        studentList.add(studentobj);
+
+        Main.YNS_Exit();
     }
     static void update_student() {
         System.out.println("====================================================");
@@ -145,15 +141,21 @@ public class Student extends Person {
         System.out.println("====================================================\n");
 
         if (studentList.size() == 0) {
-            System.out.println("There are no Students registered in the database!");
-            System.out.println("Returning to the Main Menu...");
+            System.out.println("There are no STUDENTS registered in the database!");
             Main.sysPause();
         }
         else {
             Scanner in = new Scanner(System.in).useDelimiter("\n");
-
             System.out.print("Enter ID: ");
             int upID = in.nextInt();
+
+            for (int j = 0; j < studentList.size(); j++) {
+                if (studentList.get(j).getID() != upID) {
+                    System.out.println(upID + " does not exist in the database!");
+                    Main.sysPause();
+                    return;
+                }
+            }
 
             for (int i = 0; i < studentList.size(); i++) {
                 if (upID == studentList.get(i).getID()) {
@@ -326,7 +328,7 @@ public class Student extends Person {
 
 
         if (studentList.size() == 0) {
-            System.out.println("There are no Students registered in the database!");
+            System.out.println("There are no STUDENTS registered in the database!");
             Main.sysPause();
         }
         else {
@@ -346,14 +348,16 @@ public class Student extends Person {
                 if (studentList.get(i).getID() == delID) {
                     System.out.println(studentList.get(i).getID() + " has been removed from the database!!");
                     studentList.remove(i);
-
+                    Main.YNS_Exit();
 
                     if (studentList.lastIndexOf(i) == delID) {
                         System.out.println(studentList.get(i).getID() + " has been removed from the database!!");
                         studentList.remove(i);
+                        Main.YNS_Exit();
                     }
                 }
             }
+            Main.YNS_Exit();
         }
     }
     static void show_balance() {
@@ -362,8 +366,7 @@ public class Student extends Person {
         System.out.println("====================================================\n");
 
         if (studentList.size() == 0) {
-            System.out.println("There are no Students registered in the database!");
-            System.out.println("Returning to the Main Menu...");
+            System.out.println("There are no STUDENTS registered in the database!");
             Main.sysPause();
         }
         else {
@@ -371,11 +374,19 @@ public class Student extends Person {
             System.out.print("Enter Student ID (ex. 202110139): ");
             int bal_ID = in.nextInt();
 
+            for (int j = 0; j < studentList.size(); j++) {
+                if (studentList.get(j).getID() != bal_ID) {
+                    System.out.println(bal_ID + " does not exist in the database!");
+                    Main.sysPause();
+                    return;
+                }
+            }
+
             for (int i = 0; i < studentList.size(); i++) {
                 if (bal_ID == studentList.get(i).getID()) {
                     System.out.println("Student#" + bal_ID);
                     System.out.println("\nRemaining Balance: " + studentList.get(i).getBalance());
-                    Main.YN_Exit();
+                    Main.YNS_Exit();
                 }
             }
         }
@@ -398,8 +409,7 @@ public class Student extends Person {
             for (int j = 0; j < studentList.size(); j++) {
                 if (studentList.get(j).getID() != deposit_ID) {
                     System.out.println(deposit_ID + " does not exist in the database!");
-                    Main.sysPause();
-                    return;
+                    Main.YNS_Exit();
                 }
             }
 
@@ -415,9 +425,7 @@ public class Student extends Person {
                     System.out.println("Your new balance is " + studentList.get(i).getBalance());
                 }
             }
-
-            System.out.println("Returning to Main Menu...");
-            Main.sysPause();
+            Main.YNS_Exit();
         }
     }
     static void showZero(){
@@ -426,8 +434,7 @@ public class Student extends Person {
         System.out.println("====================================================\n");
 
         if (studentList.size() == 0) {
-            System.out.println("There are no Students registered in the database!");
-            System.out.println("Returning to the Main Menu...");
+            System.out.println("There are no STUDENTS registered in the database!");
             Main.sysPause();
             return;
         }
@@ -437,8 +444,8 @@ public class Student extends Person {
                     System.out.println("\nStudent# " + studentList.get(i).getID() + " : " + studentList.get(i).getFName() + studentList.get(i).getLName());
                 }
             }
+            Main.YNS_Exit();
         }
-        Main.YN_Exit();
     }
     static void showNonZero(){
         System.out.println("====================================================");
@@ -446,8 +453,7 @@ public class Student extends Person {
         System.out.println("====================================================\n");
 
         if (studentList.size() == 0) {
-            System.out.println("There are no Students registered in the database!");
-            System.out.println("Returning to the Main Menu...");
+            System.out.println("There are no STUDENTS registered in the database!");
             Main.sysPause();
             return;
         }
@@ -457,7 +463,8 @@ public class Student extends Person {
                     System.out.println("\nStudent# " + studentList.get(i).getID() + " : " + studentList.get(i).getFName() + " " + studentList.get(i).getLName());
                 }
             }
+            Main.YNS_Exit();
         }
-        Main.YN_Exit();
+
     }
 }
