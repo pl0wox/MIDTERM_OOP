@@ -7,6 +7,8 @@ public class Student extends Person {
     private double amount_paid, total_amount, balance, dep_amount;
     private static final int ModulePrice = 525, RepeatedModulePrice = 110;
 
+    public static boolean running = true;
+
     public static List<Student> studentList = new ArrayList<>();
 
     //  Constructor Student
@@ -45,27 +47,32 @@ public class Student extends Person {
 
         Scanner in = new Scanner(System.in).useDelimiter("\n");
 
-        System.out.print("Enter ID: ");
+
 
         // Initalize addID variable to zero to only accept integer values
         int addID = 0;
 
-        // Validation for Student ID
-        if(in.hasNextInt()){
-            addID = in.nextInt();
-            for (int i = 0; i < studentList.size(); i++) {
-                if (addID == studentList.get(i).getID()) {
-                    System.out.println("ID is already registered!");
-                    Main.sysPause();
-                    return;
+        while(running) {
+            // Validation for Student ID\
+            System.out.print("Enter ID: ");
+            if (in.hasNextInt()) {
+                running = false;
+                addID = in.nextInt();
+                for (int i = 0; i < studentList.size(); i++) {
+                    if (addID == studentList.get(i).getID()) {
+                        System.out.println("ID is already registered!");
+                        Main.sysPause();
+                        in = new Scanner(System.in).useDelimiter("\n");
+                        running = true;
+                    }
                 }
+            } else {
+                System.out.println("Please enter a valid input!");
+                Main.sysPause();
+                in = new Scanner(System.in).useDelimiter("\n");
+                running = true;
             }
-        }
-        else {
-            System.out.println("Please enter a valid input!");
-            Main.sysPause();
-            return;
-        }
+        }running = true;
 
         System.out.print("Enter First Name: ");
         String addFirstname = in.next();
@@ -82,44 +89,54 @@ public class Student extends Person {
         System.out.print("Enter Address: ");
         String addAddress = in.next();
 
-        System.out.print("Enter Number of Modules: ");
-        int addModules = in.nextInt();
+        int addModules = 0;
+        int addRepModules = 0;
+             while(running) {
+                // Constraint the user to only input less than or equal than 6 modules
 
-        System.out.print("Enter Number of Repeated Modules: ");
-        int addRepModules = in.nextInt();
+                 System.out.print("Enter Number of Modules: ");
+                 addModules = in.nextInt();
 
-        // Constraint the user to only input less than or equal than 6 modules
-        if ((addModules + addRepModules) > 6) {
-            System.out.println("You cannot get more than 6 modules for this semester!");
-            return;
-        } else if (addModules !=0 && addRepModules > 2) {
-            System.out.println("You cannot take a new module if you want to take more than 2 repeated modules this semester!");
-            return;
-        }
+                 System.out.print("Enter Number of Repeated Modules: ");
+                 addRepModules = in.nextInt();
 
-        double total_amount = (ModulePrice * addModules) + (RepeatedModulePrice * addRepModules);
-        System.out.println("Total: " + total_amount);
+                if ((addModules + addRepModules) > 6) {
+                    System.out.println("You cannot get more than 6 modules for this semester!");
+                    Main.sysPause();
+                    in = new Scanner(System.in).useDelimiter("\n");
+                    running = true;
 
-        System.out.print("Enter Amount Paid: ");
-        double addAmount = in.nextDouble();
+                    running = true;
+                } else if (addModules != 0 && addRepModules > 2) {
+                    System.out.println("You cannot take a new module if you want to take more than 2 repeated modules this semester!");
+                    Main.sysPause();
+                    in = new Scanner(System.in).useDelimiter("\n");
+                    running = true;
+                }
+                else {running = false;}
+            }running = true;
 
-        if(addAmount > total_amount){
-            System.out.println("Cannot pay more than " + total_amount);
+
+
+            double total_amount = (ModulePrice * addModules) + (RepeatedModulePrice * addRepModules);
+            System.out.println("Total: " + total_amount);
+
+            System.out.print("Enter Amount Paid: ");
+            double addAmount = in.nextDouble();
+
+            double balance = total_amount - addAmount;
+
+            System.out.print("\n\t\t\t\t   Account Status ");
+            // Inform user that 1 student has been added
+            System.out.println("\nSuccessfully Added Student #" + addID + " to the Database!");
             Main.sysPause();
-            return;
-        }
 
-        double balance = total_amount - addAmount;
+            // store all inputs of user inside the constructor
+            Student studentobj = new Student(addID, addFirstname, addLastname, addGender, addPhone, addAddress, addModules, addRepModules, addAmount, total_amount, balance);
 
-        System.out.print("\n\t\t\t\t   Account Status ");
-        // Inform user that 1 student has been added
-        System.out.println("\nSuccessfully Added Student #" + addID + " to the Database!");
+            // store inside the array list
+            studentList.add(studentobj);
 
-        // store all inputs of user inside the constructor
-        Student studentobj = new Student(addID, addFirstname, addLastname, addGender, addPhone, addAddress, addModules, addRepModules, addAmount, total_amount, balance);
-
-        // store inside the array list
-        studentList.add(studentobj);
 
     }
     static void update_student() {
