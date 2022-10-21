@@ -1,7 +1,6 @@
 public class Person {
-    //isa pa ulit
     private int ID;
-    //private long PhoneNum;
+    //
     private String FName, LName, PhoneNum, Gender, Address;
 
     public int getID() {
@@ -11,40 +10,20 @@ public class Person {
         this.ID = ID;
     }
 
-    public String getPhoneNum() {
-        return PhoneNum;
-    }
-    public void setPhoneNum(String phoneNum) {
-        PhoneNum = phoneNum;
-    }
+    public String getPhoneNum() {  return PhoneNum;  }
+    public void setPhoneNum(String phoneNum) {  PhoneNum = phoneNum;  }
 
-    public String getFName() {
-        return FName;
-    }
-    public void setFName(String FName) {
-        this.FName = FName;
-    }
+    public String getFName() {  return FName;  }
+    public void setFName(String FName) {  this.FName = FName;  }
 
-    public String getLName() {
-        return LName;
-    }
-    public void setLName(String LName) {
-        this.LName = LName;
-    }
+    public String getLName() {  return LName;  }
+    public void setLName(String LName) {  this.LName = LName;  }
 
-    public String getGender() {
-        return Gender;
-    }
-    public void setGender(String gender) {
-        Gender = gender;
-    }
+    public String getGender() {  return Gender;  }
+    public void setGender(String gender) {  Gender = gender;  }
 
-    public String getAddress() {
-        return Address;
-    }
-    public void setAddress(String address) {
-        Address = address;
-    }
+    public String getAddress() {  return Address;  }
+    public void setAddress(String address) {  Address = address;  }
 
 
     Person(int ID, String Fname, String Lname, String Gender, String PhoneNum, String Address){
@@ -55,5 +34,4 @@ public class Person {
         this.Gender = Gender;
         this.Address = Address;
     }
-
 }

@@ -1,28 +1,11 @@
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList; // import the ArrayList class
-import java.util.*;
 
 public class Main {
 
     public static void main(String[] args){
-        // for testing onli xdxdxdxd
-
-        Student student = new Student(1,"Jethro Emmanuel","Roxas","m", "09065235411","Manila",2,1,1000);
-        Student.studentList.add(student);
-        Student student2 = new Student(2,"Jethro2","Roxas","m","1293827121","jan",1,2, 300);
-        Student.studentList.add(student2);
-        Student student3 = new Student(3,"Jethro3","Roxas","m","1212121210","jan",3,1,3343);
-        Student.studentList.add(student3);
-        Student student4 = new Student(4,"Jethro4","Roxas","m","10323232","jan",2,1,32343);
-        Student.studentList.add(student4);
-
-
-
         menu_ST(); // display Student or Teacher menu
         menu(choice());
+
     }
 
 
@@ -31,6 +14,28 @@ public class Main {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+    static void YN_Exit(){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Back to Main Menu? [Y/N]");
+        String x = in.next();
+
+        if (x.contains("Y") || x.contains("y")){
+            System.out.println("\nReturning to the Main Menu...");
+            Main.sysPause();
+            Main.menu_ST();
+            Main.menu(Main.choice());
+        }
+        else if (x.contains("N") || x.contains("n")){
+            System.out.println("\nThank you for using our program! Bouncing...");
+            Main.sysPause();
+            System.exit(0);
+        }
+        // needs testing
+        else {
+            System.out.println("\nInvalid Input!");
+            Main.sysPause();
         }
     }
     static void menu_ST(){
@@ -42,8 +47,6 @@ public class Main {
         System.out.println("[2] Teacher");
         System.out.println("\n[0] Exit Program");
         System.out.println("\n====================================================\n");
-
-
     }
     static void menu_student(){
         System.out.println("\n====================================================");
@@ -59,6 +62,9 @@ public class Main {
         System.out.println("[8] Go back to Main Menu\n");
     }
     static void menu_teacher(){
+        System.out.println("\n====================================================");
+        System.out.println("\t\t\t\t\t<< TEACHER >>");      // tab = 4 spaces
+        System.out.println("====================================================\n");
         System.out.println("[1] Add new Teacher");
         System.out.println("[2] Update Teacher");
         System.out.println("[3] Delete Teacher");
@@ -83,13 +89,14 @@ public class Main {
                 case 1: // student menu
                     menu_student();
                     stud(choice());
-
                     break;
                 case 2: // teacher menu
                     menu_teacher();
                     teach(choice());
                     break;
                 case 0: // program exit
+                    System.out.println("Thank you for using our program! Exiting now...");
+                    Main.sysPause();
                     System.exit(0);
                 default:
                     System.out.println("\nOops... wrong input!");
@@ -103,34 +110,32 @@ public class Main {
     static void stud(int c){
         switch (c){
             case 1:
+                // add student
                 Student.add_student();
                 break;
             case 2:
+                // update student
                 Student.update_student();
                 break;
             case 3:
+                // delete student
                 Student.delete_student();
-                /*
-                for(int i = 0; i < studentList.size(); i++){
-                    System.out.println(studentList.get(i).getFName());
-                }
-                 */
                 break;
             case 4:
                 // show balance
-                //Student.show_balance();
+                Student.show_balance();
                 break;
             case 5:
                 // fee deposit
-                //Student.deposit();
+                Student.deposit();
                 break;
             case 6:
                 // display zero bal
-                //Student.showZero();
+                Student.showZero();
                 break;
             case 7:
                 // display non zero
-                //Student.showNonZero();
+                Student.showNonZero();
                 break;
             case 8:
                 // return to Main Menu
@@ -172,11 +177,7 @@ public class Main {
                 break;
             default:
                 System.out.println("Invalid input!");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                Main.sysPause();
                 break;
         }
     }
